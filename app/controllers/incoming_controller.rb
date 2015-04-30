@@ -7,11 +7,13 @@ class IncomingController < ApplicationController
 		user = User.find_by_email(params[:sender])
 		if user.nil?
 			user = User.new(:email => params[:sender], :name => 'New User', :password => 'password', :password_confirmation => 'password')
+			user.save
 		end
 		
-		topic = Topic.find_by_name(params[:subject])
+		topic = Topic.find_by_title(params[:subject])
 		if topic.nil?
 			topic = Topic.new(:title => params[:subject], :user => user)
+			topic.save
 		end
 
 		url = params["body-plain"]
