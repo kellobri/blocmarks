@@ -2,7 +2,18 @@
 	<div class="col-md-8">
 		<h1>Blocmarks</h1>
 		<p class="lead">Recent bookmarks:</p>
-		<%= render @bookmarks %>
+		<% @bookmarks.each do |bookmark| %>
+			<div class="media">
+				<div class="media-body">
+					<h4 class="media-heading">
+						<%= link_to bookmark.url, bookmark.url %>
+					</h4>
+					<small>
+						<%= bookmark.topic %>
+					</small>
+				</div>
+			</div>
+		<% end %>
 	</div>
 	<div class="col-md-4">
 	</div>
