@@ -1,0 +1,11 @@
+<h1><%= current_user.name %> Blocmarks by Topic</h1>
+
+<% @topics.each do |topic| %>
+	<div class="media">
+		<div class="media-body">
+			<h4 class="media-heading">
+				<%= render partial: 'bookmarks/personalblocmarks', locals: {topic: topic} %>
+			</h4>
+		</div>
+	</div>
+<% end %>

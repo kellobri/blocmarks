@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   post :incoming, to: 'incoming#create'
 
   get 'blocmarks', to: 'bookmarks#index'
+  get 'topics', to: 'topics#index'
+  get 'my-topics', to: 'topics#personal'
+
+  resources :topics
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
