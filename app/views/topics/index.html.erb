@@ -1,0 +1,12 @@
+<h1>Blocmarks by Topic</h1>
+
+<% @topics.each do |topic| %>
+	<div class="media">
+		<div class="media-body">
+			<h4 class="media-heading">
+				<%= topic.title %>
+				<%= render partial: 'bookmarks/blocmarks', locals: {topic: topic.title} %>
+			</h4>
+		</div>
+	</div>
+<% end %>
