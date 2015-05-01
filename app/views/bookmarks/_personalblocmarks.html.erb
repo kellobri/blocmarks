@@ -1,0 +1,13 @@
+<% blocmarks = Bookmark.joins(:topic).where(topics: {title: topic.title}) %>
+<% mymarks = blocmarks.joins(:user).where({user_id: current_user}) %>
+
+<% if mymarks.count > 0 %>
+	<h3><%= link_to "##{topic.title}", "topics/#{topic.id}" %></h3>
+	<ul>
+	<% mymarks.each do |mark| %>
+		<h4>		
+			<li><%= link_to mark.url, mark.url %></li>
+		</h4>
+	<% end %>
+	</ul>
+<% end %>

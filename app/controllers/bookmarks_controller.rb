@@ -19,7 +19,7 @@ class BookmarksController < ApplicationController
   end
 
   def bookmark_params
-    params.require(:bookmark).permit(:topic, :url)
+    params.require(:bookmark).permit(:topic, :url, :user)
   end
 
 end

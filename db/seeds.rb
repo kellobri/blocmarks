@@ -5,6 +5,7 @@ admin = User.new(
 	email: 'kellyobriant@gmail.com',
 	password: 'blocparty'
 	)
+admin.skip_confirmation!
 admin.save!
 
 kellystandard = User.new(
@@ -12,6 +13,7 @@ kellystandard = User.new(
 	email: 'kobriant@gmu.edu',
 	password: 'blocparty'
 	)
+kellystandard.skip_confirmation!
 kellystandard.save!
 
 users = User.all
@@ -26,6 +28,7 @@ topics = Topic.all
 
 32.times do 
 	Bookmark.create!(
+		user: users.sample,
 		topic: topics.sample,
 		url: Faker::Internet.url
 	)
