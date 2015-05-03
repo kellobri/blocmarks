@@ -2,7 +2,12 @@
 <ul class="no-bull">
 <% blocmarks.each do |mark| %>
 	<h4>
-		<li><%= link_to mark.url, "//#{mark.url}" %></li>
+		<li>
+			<div class="del-button pull-left">
+				<%= render partial: 'likes/like', locals: {bookmark: mark} %>
+			</div>
+				<%= link_to mark.url, "//#{mark.url}" %>
+		</li>
 	</h4>
 <% end %>
 </ul>
