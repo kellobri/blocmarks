@@ -1,11 +1,19 @@
 <h1><%= current_user.name %> Blocmarks by Topic</h1>
 
-<% @topics.each do |topic| %>
-	<div class="media">
-		<div class="media-body">
-			<h4 class="media-heading">
-				<%= render partial: 'bookmarks/personalblocmarks', locals: {topic: topic} %>
-			</h4>
-		</div>
+<div class="row">
+	<div class="col-md-6">
+		<% @topics.each do |topic| %>
+			<div class="media">
+				<div class="media-body">
+					<h4 class="media-heading">
+						<%= render partial: 'bookmarks/personalblocmarks', locals: {topic: topic} %>
+					</h4>
+				</div>
+			</div>
+		<% end %>
 	</div>
-<% end %>
+
+	<div class="col-md-6">
+		<%= render partial: 'bookmarks/new' %>
+	</div>
+</div>

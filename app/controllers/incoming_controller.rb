@@ -17,7 +17,7 @@ class IncomingController < ApplicationController
 		end
 
 		url = params["body-plain"]
-		bookmark = Bookmark.new(:topic => topic, :url => url)
+		bookmark = Bookmark.new(:topic_id => topic.id, :user_id => user.id, :url => url)
 
 		bookmark.save
 

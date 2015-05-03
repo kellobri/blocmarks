@@ -1,8 +1,8 @@
 <% blocmarks = Bookmark.joins(:topic).where(topics: {title: topic}) %>
-<ul>
+<ul class="no-bull">
 <% blocmarks.each do |mark| %>
 	<h4>
-		<li><%= link_to mark.url, mark.url %></li>
+		<li><%= link_to mark.url, "//#{mark.url}" %></li>
 	</h4>
 <% end %>
 </ul>

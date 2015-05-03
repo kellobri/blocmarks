@@ -3,10 +3,19 @@
 
 <% if mymarks.count > 0 %>
 	<h3><%= link_to "##{topic.title}", "topics/#{topic.id}" %></h3>
-	<ul>
+	<ul class="no-bull">
 	<% mymarks.each do |mark| %>
 		<h4>		
-			<li><%= link_to mark.url, mark.url %></li>
+			<li>
+				<div class="del-button pull-left">
+				<%# if policy(mark).destroy? %>
+					<%= button_to mark, method: :delete, class: 'btn btn-danger btn-xs' do %>
+						<span class="glyphicon glyphicon-remove"></span>
+					<% end %>
+				<%# end %>
+				</div>
+				<%= link_to mark.url, mark.url %>
+			</li>
 		</h4>
 	<% end %>
 	</ul>
