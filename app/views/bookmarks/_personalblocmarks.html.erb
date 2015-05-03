@@ -9,12 +9,10 @@
 			<li>
 				<div class="del-button pull-left">
 				<%# if policy(mark).destroy? %>
-					<%= button_to mark, method: :delete, class: 'btn btn-danger btn-xs' do %>
-						<span class="glyphicon glyphicon-remove"></span>
-					<% end %>
+					<%= link_to "", mark, method: :delete, class: 'glyphicon glyphicon-remove red' %>
 				<%# end %>
 				</div>
-				<%= link_to mark.url, mark.url %>
+				<%= link_to mark.url, mark.url, class: 'black' %>
 			</li>
 		</h4>
 	<% end %>
