@@ -18,6 +18,10 @@ class ApplicationPolicy
     user.present?
   end
 
+  def like?
+    user.present? && (record.user != user)
+  end
+
   def new?
     create?
   end

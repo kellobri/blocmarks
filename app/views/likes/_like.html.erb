@@ -1,5 +1,7 @@
-<% if like = current_user.liked(bookmark) %>
-	<%= link_to "", [bookmark, like], method: :delete, class: 'glyphicon glyphicon-minus-sign' %>
-<% else %>
-	<%= link_to "", [bookmark, Like.new], method: :post, class: 'glyphicon glyphicon-plus-sign' %>
+<% if policy(bookmark).like? %>
+	<% if like = current_user.liked(bookmark) %>
+		<%= link_to "", [bookmark, like], method: :delete, class: 'glyphicon glyphicon-minus-sign' %>
+	<% else %>
+		<%= link_to "", [bookmark, Like.new], method: :post, class: 'glyphicon glyphicon-plus-sign' %>
+	<% end %>
 <% end %>
