@@ -21,4 +21,6 @@ class LikesController < ApplicationController
 			redirect_to my_topics_path, notice: "There was an error in removing that blocmark from your collection. Please try again."
 		end
 	end
+
+
 end
