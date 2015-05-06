@@ -1,5 +1,7 @@
 <% blocmarks = Bookmark.joins(:topic).where(topics: {title: topic.title}) %>
 <% mymarks = blocmarks.joins(:user).where({user_id: current_user}) %>
+<% likeids = Like.where({user_id: 1}).pluck(:bookmark_id) %>
+<% likemarks = Bookmark.find(likeids) %> 
 
 <% if mymarks.count > 0 %>
 	<h3><%= link_to "##{topic.title}", "topics/#{topic.id}" %></h3>
@@ -16,5 +18,19 @@
 			</li>
 		</h4>
 	<% end %>
+
+	<% likemarks.each do |lark| %>
+		<% if lark.topic_id == topic.id %>
+			<h4>
+				<li>
+					<div class="del-button pull-left">
+						<%= render partial: 'likes/like', locals: {bookmark: lark} %>
+					</div>
+					<%= link_to lark.url, lark.url, class: 'black' %>
+				</li>
+			</h4>
+		<% end %>
+	<% end %>
+
 	</ul>
 <% end %>
