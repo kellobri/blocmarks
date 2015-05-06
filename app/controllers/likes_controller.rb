@@ -15,10 +15,12 @@ class LikesController < ApplicationController
 		@bookmark = Bookmark.find(params[:bookmark_id])
 		@like = current_user.likes.find(params[:id])
 
-		if like.destroy
+		if @like.destroy
 			redirect_to my_topics_path, notice: "Your have removed this blocmark to your collection."
 		else
 			redirect_to my_topics_path, notice: "There was an error in removing that blocmark from your collection. Please try again."
 		end
 	end
+
+
 end

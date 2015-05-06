@@ -11,15 +11,21 @@ class TopicsController < ApplicationController
 
   def new
   	@topic = Topic.new
+    authorize @topic
   end
 
   def create
   	@topic = Topic.new(topic_params)
+    authorize @topic
+    @topic.user_id = current_user.id
   	if @topic.save
-  		redirect_to root_url, notice: "Your new Topic was saved successfully."
-  	else
+  		redirect_to my_topics_path, notice: "Your new Topic was saved successfully."
+  	elsif Topic.find_by_title(@topic.title).nil? == false
+      flash[:error] = "That Topic title already exists. You cannot create it again."
+      redirect_to my_topics_path
+    else
   		flash[:error] = "Error creating Topic. Please try again."
-  		render :new
+  		redirect_to my_topics_path
   	end
   end
 
