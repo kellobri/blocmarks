@@ -1,0 +1,14 @@
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h2 class="panel-title">Add a New Topic</h2>
+	</div>
+	<div class="panel-body">
+		<%= form_for Topic.new do |f| %>
+			<div class="form-group">
+				<%= f.label :title %>
+				<%= f.text_field :title, class: 'form-control', placeholder: "Give your topic a title" %>
+			</div>
+			<%= f.submit "Save", class: 'btn btn-info btn-lg' %>
+		<% end %>
+	</div>
+</div>
