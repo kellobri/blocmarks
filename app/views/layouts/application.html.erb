@@ -12,9 +12,12 @@
 		<ul class="nav nav-tabs">
 			<li><%= link_to "Home", welcome_index_path %></li>
 			<li><%= link_to "GitHub", "https://github.com/kellobri/blocmarks" %></li>
+			<li><%= link_to "All Blocmarks", topics_path %></li>
 			<div class="pull-right user-info">
 				<% if current_user %>
-					Hello <%= link_to current_user.name || current_user.email, edit_user_registration_path %>! <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+					Hello <%= link_to current_user.name || current_user.email, edit_user_registration_path %>!  
+					<%= link_to "Your Blocmarks", my_topics_path, class: 'btn btn-primary btn-xs' %>
+					<%= link_to "Sign out", destroy_user_session_path, method: :delete, class: 'btn btn-warning btn-xs' %>
 				<% else %>
 					<%= link_to "Sign In", new_user_session_path %> or 
 					<%= link_to "Sign Up", new_user_registration_path %>
