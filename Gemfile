@@ -37,6 +37,7 @@ gem 'devise'
 gem 'figaro', '1.0'
 gem 'faker'
 gem 'pundit'
+gem 'friendly_id', '~> 5.1.0'
 
 group :production do
 	gem 'pg'
