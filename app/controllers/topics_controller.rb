@@ -20,7 +20,7 @@ class TopicsController < ApplicationController
     @topic.user_id = current_user.id
   	if @topic.save
   		redirect_to my_topics_path, notice: "Your new Topic was saved successfully."
-  	elsif Topic.find_by_title(@topic.title).nil? == false
+  	elsif Topic.friendly.find_by_title(@topic.title).nil? == false
       flash[:error] = "That Topic title already exists. You cannot create it again."
       redirect_to my_topics_path
     else
@@ -30,12 +30,12 @@ class TopicsController < ApplicationController
   end
 
   def show
-    @topic = Topic.find(params[:id])
+    @topic = Topic.friendly.find(params[:id])
     @blocmarks = Bookmark.joins(:topic).where(topics: {title: @topic.title})
   end
 
   def destroy 
-    @topic = Topic.find(params[:id])
+    @topic = Topic.friendly.find(params[:id])
     if @topic.destroy
       redirect_to topics_path, notice: "Topic was destroyed successfully."
     else
